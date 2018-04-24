@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My Jaws that Bite My Claws That Catch</title>
+	<link rel="icon" href="https://i1.wp.com/www.adventuresinpoortaste.com/wp-content/uploads/2018/04/Shudderwock.jpg?fit=1024%2C1448">
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+
+		#witchwood{
+			background: url("witchwood.jpg");
+			height: 100vh;
+			background-position: 75% 20%;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.shudder{
+			position: absolute;
+		}
+
+		.preload{
+			visibility: hidden;
+			display: none;
+		}
+
+		
+	</style>
+
+
+</head>
+<body>
+<!-- 	<audio id="audio" class="preload">
+		<source src="shudderwock.ogg">
+		<source src="shudderwock.wav">
+	</audio> -->
+
+	<img src="shudderwock.png" class="preload" alt="">
+	<img src="golden.png" class="preload" alt="">
+	<div id="witchwood" onclick="wok(event)"></div>
+</body>
+	<!--Howler.js cdn -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.9/howler.core.min.js"></script>
+	<script type="text/javascript">
+		//document.getElementById('witchwood').addEventListener("click", wok);
+		var z = 0;
+		function wok(e){
+			//finds position of mouse
+			var x= e.clientX;
+			var y= e.clientY;
+
+			//creates the img element
+			var img = document.createElement("img");
+			golden(img);
+			img.className = "shudder";
+			img.style.top = y - 100 + "px";
+			img.style.left = x - 110+ "px";
+
+			//appends the img into the div class="witchwood"
+			document.getElementById('witchwood').appendChild(img);
+			
+			//Plays sound from Howler.js
+			var sound = new Howl({src: ['shudderwock.ogg', 'shudderwock.wav']});
+			sound.play();
+
+		}
+
+		//Makes 1/10 cards golden
+		function golden(x){
+			var z = Math.random() * 101;
+			if(z > 90)
+			{
+				x.src="golden.png"
+			}
+			else{
+				x.src="shudderwock.png"
+			}
+		}
+
+	</script>
+
+</html>
